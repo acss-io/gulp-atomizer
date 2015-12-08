@@ -19,6 +19,7 @@
   "dependencies": {
     "atomizer": "^3.3.2",
     "eslint": "^1.10.3",
+    "lodash": "^3.10.1",
     "through2": "^2.0.0",
     "vinyl": "^1.1.0",
     "vinyl-fs": "^2.2.1"
