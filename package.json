@@ -1,0 +1,19 @@
+{
+  "name": "gulp-atomizer",
+  "version": "1.0.0",
+  "description": "Gulp plugin for Atomizer",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/whmountains/gulp-atomizer.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/whmountains/gulp-atomizer/issues"
+  },
+  "homepage": "https://github.com/whmountains/gulp-atomizer#readme"
+}
