@@ -15,5 +15,15 @@
   "bugs": {
     "url": "https://github.com/whmountains/gulp-atomizer/issues"
   },
-  "homepage": "https://github.com/whmountains/gulp-atomizer#readme"
+  "homepage": "https://github.com/whmountains/gulp-atomizer#readme",
+  "dependencies": {
+    "atomizer": "^3.3.2",
+    "eslint": "^1.10.3",
+    "through2": "^2.0.0",
+    "vinyl": "^1.1.0",
+    "vinyl-fs": "^2.2.1"
+  },
+  "devDependencies": {
+    "event-stream": "^3.3.2"
+  }
 }
