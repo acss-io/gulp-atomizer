@@ -35,11 +35,6 @@ module.exports = function(outputName, config) {
       return cb(null, file)
     }
 
-    if ( ! File.isVinyl(file)) {
-      // What!!!!  We're not being given a vinyl file!?!?!?!
-      return cb(null, file)
-    }
-
     else if (file.isStream()) {
       // file.contents is a Stream.  We don't support streams
       this.emit('error', new PluginError(PLUGIN_NAME, 'Streams not supported!'))
