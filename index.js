@@ -18,7 +18,7 @@ var path     = require('path')
 module.exports = function(outputName, config) {
 
   // default the args
-  var outputName = 'atomic.css'
+  outputName = outputName || 'atomic.css'
   var acssConfig = config || {}
 
   //global variables

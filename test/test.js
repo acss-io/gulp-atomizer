@@ -11,7 +11,7 @@ describe('gulp-atomizer', function() {
     it('should find acss classnames in html files', function (td) {
 
       //init our transformer
-      var acss = atomizer('atomic,css', {
+      var acss = atomizer('something.css', {
         "custom": {
           "Bgc($primary)": "#f3f3f3"
         }
@@ -31,6 +31,7 @@ describe('gulp-atomizer', function() {
         // stringify the buffer
         var contents = file.contents.toString('utf8')
 
+        assert.equal(file.path, __dirname + '/something.css', 'acss didnt output correct path')
         assert.equal(contents, template, 'acss output isnt correct')
 
         td()
