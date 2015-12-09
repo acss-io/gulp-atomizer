@@ -4,6 +4,7 @@ var through  = require('through2')
 var Atomizer = require('atomizer')
 var _        = require('lodash')
 var File     = require('vinyl')
+var path     = require('path')
 
 // Parse text to find Atomic CSS classes
 // var foundClasses = atomizer.findClassNames()
@@ -14,9 +15,10 @@ var File     = require('vinyl')
 // Generate Atomic CSS from configuration
 // var css = atomizer.getCss(finalConfig)
 
-module.exports = function(config) {
+module.exports = function(outputName, config) {
 
-  // default the config to an empty object
+  // default the args
+  var outputName = 'atomic.css'
   var acssConfig = config || {}
 
   //global variables
@@ -85,6 +87,7 @@ module.exports = function(config) {
     // create the output file
     // (take the metadata from most recent file)
     var atomicFile = latestFile.clone({contents: false})
+    atomicFile.path = path.join(latestFile.base, outputName)
     atomicFile.contents = new Buffer(cssOut)
 
     // all done!

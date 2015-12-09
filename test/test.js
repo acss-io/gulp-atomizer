@@ -11,7 +11,7 @@ describe('gulp-atomizer', function() {
     it('should find acss classnames in html files', function (td) {
 
       //init our transformer
-      var acss = atomizer({
+      var acss = atomizer('atomic,css', {
         "custom": {
           "Bgc($primary)": "#f3f3f3"
         }
