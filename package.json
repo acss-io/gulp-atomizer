@@ -1,11 +1,11 @@
 {
   "name": "gulp-atomizer",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Gulp plugin for Atomizer",
   "tags": "gulpplugin",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node_modules/.bin/mocha"
   },
   "repository": {
     "type": "git",
@@ -19,13 +19,14 @@
   "homepage": "https://github.com/whmountains/gulp-atomizer#readme",
   "dependencies": {
     "atomizer": "^3.3.2",
-    "eslint": "^1.10.3",
     "lodash": "^3.10.1",
     "through2": "^2.0.0",
-    "vinyl": "^1.1.0",
-    "vinyl-fs": "^2.2.1"
+    "vinyl": "^1.1.0"
   },
   "devDependencies": {
-    "event-stream": "^3.3.2"
+    "event-stream": "^3.3.2",
+    "vinyl-fs": "^2.2.1",
+    "eslint": "^1.10.3",
+    "mocha": "^2.3.4"
   }
 }
