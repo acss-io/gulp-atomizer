@@ -2,6 +2,7 @@
   "name": "gulp-atomizer",
   "version": "1.0.0",
   "description": "Gulp plugin for Atomizer",
+  "tags": "gulpplugin",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

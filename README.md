@@ -1,2 +1,29 @@
 # gulp-atomizer
-Atomizer needs a gulp plugin!  Hopefully this project will fill that need.
+
+Gulp plugin for [Atomizer](https://github.com/yahoo/atomizer).
+
+Warning: This is my first gulp plugin.  You may find some rough edges.  If something doesn't work right **please submit a bug report or pull request**.  I'm committed to maintaining it and making it work like any other first-class gulp plugin.
+
+## Installation
+```
+npm install --save-dev gulp-atomizer
+```
+
+## Example
+```
+var gulp = require('gulp');
+var acss = require('gulp-atomizer');
+
+gulp.task('acss', function() {
+  return gulp.src('./*.html')
+    .pipe(acss())
+    .pipe(gulp.dest('dist'));
+});
+```
+
+## Testing
+Use [Mocha](http://mochajs.org/).
+```
+npm install -g mocha  # install globaly
+mocha                 # run the tests
+```
