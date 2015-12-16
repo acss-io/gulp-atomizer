@@ -22,8 +22,7 @@ gulp.task('acss', function() {
 ```
 
 ## Testing
-Use [Mocha](http://mochajs.org/).
+Uses [Mocha](http://mochajs.org/) under the hood.
 ```bash
-npm install -g mocha  # install globaly
-mocha                 # run the tests
+npm run test
 ```
