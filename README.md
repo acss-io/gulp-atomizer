@@ -23,6 +23,19 @@ gulp.task('acss', function() {
 });
 ```
 
+## Example with custom filename, config, and options
+```js
+var gulp = require('gulp');
+var acss = require('gulp-atomizer');
+var acssConf = require('your-conf-file.js') // this would contain your breakpoint definitions, customs, etc.
+
+gulp.task('acss', function() {
+  return gulp.src('./*.html')
+    .pipe(acss('_atoms.scss', acssConf, {namespace: '#atomic', verbose: true}))
+    .pipe(gulp.dest('dist'));
+});
+```
+
 ## Testing
 Uses [Mocha](http://mochajs.org/) under the hood.
 ```bash

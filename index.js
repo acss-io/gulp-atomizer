@@ -15,7 +15,7 @@ var path     = require('path')
 // Generate Atomic CSS from configuration
 // var css = atomizer.getCss(finalConfig)
 
-module.exports = function(outputName, config) {
+module.exports = function(outputName, config, options /*optional css options*/) {
 
   // default the args
   outputName = outputName || 'atomic.css'
@@ -77,7 +77,7 @@ module.exports = function(outputName, config) {
     // merge the classes into the user's config
     var finalConfig = acss.getConfig(classes, acssConfig)
     // get the actual css
-    var cssOut = acss.getCss(finalConfig)
+    var cssOut = options ? acss.getCss(finalConfig, options) : ascc.getCss(finalConfig)
 
     // create the output file
     // (take the metadata from most recent file)
