@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/whmountains/gulp-atomizer.git"
+    "url": "https://github.com/acss-io/gulp-atomizer.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/whmountains/gulp-atomizer/issues"
+    "url": "https://github.com/acss-io/gulp-atomizer/issues"
   },
-  "homepage": "https://github.com/whmountains/gulp-atomizer#readme",
+  "homepage": "https://github.com/acss-io/gulp-atomizer#readme",
   "dependencies": {
     "atomizer": "^3.3.2",
     "lodash": "^3.10.1",
