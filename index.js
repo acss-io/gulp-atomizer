@@ -77,7 +77,7 @@ module.exports = function(outputName, config, options /*optional css options*/) 
     // merge the classes into the user's config
     var finalConfig = acss.getConfig(classes, acssConfig)
     // get the actual css
-    var cssOut = options ? acss.getCss(finalConfig, options) : ascc.getCss(finalConfig)
+    var cssOut = options ? acss.getCss(finalConfig, options) : acss.getCss(finalConfig)
 
     // create the output file
     // (take the metadata from most recent file)
