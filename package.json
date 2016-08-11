@@ -21,9 +21,8 @@
     "atomizer": "^3.3.2",
     "lodash": "^3.10.1",
     "through2": "^2.0.0",
-    "vinyl": "^1.1.0",
-    "event-stream": "^3.3.2",
     "vinyl-fs": "^2.2.1",
+    "event-stream": "^3.3.2",
     "mocha": "^2.3.4"
   },
   "devDependencies": {
