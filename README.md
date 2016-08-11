@@ -31,9 +31,52 @@ var acssConf = require('your-conf-file.js') // this would contain your breakpoin
 
 gulp.task('acss', function() {
   return gulp.src('./*.html')
-    .pipe(acss('_atoms.scss', acssConf, {namespace: '#atomic', verbose: true}))
+    .pipe(acss('_atoms.scss', acssConf, {
+      namespace: '#atomic'
+    }))
     .pipe(gulp.dest('dist'));
 });
+```
+
+## Example with custom rules addition
+You can add your own rules by passing in the `addRules` property in the options object. These will be concatenated after the normal set of rules. Setting rules up this way helps with the creation of theme files.
+```js
+// your-rules-file.js
+module.exports = [{
+    'type': 'helper',
+    'id': 'test-helper',
+    'name': 'Test Helper',
+    'matcher': 'test-helper',
+    'noParams': true,
+    'styles': {
+      'cursor': 'pointer',
+      'font-size': '1.3em',
+      'padding': '5px'
+    }
+  }, {
+    'type': 'pattern',
+    'id': 'test-pattern',
+    'name': 'Test Pattern',
+    'matcher': 'TestPattern',
+    'allowParamToValue': true,
+    'styles': {
+      'margin': '5px 5px 10px',
+      'background-color': '$0'
+    }
+}];
+```
+```js
+var gulp = require('gulp');
+var acss = require('gulp-atomizer');
+var acssConf = require('your-conf-file.js')
+var acssOptions = require('your-rules-file.js')
+
+gulp.task('acss', function() {
+  return gulp.src('./*.html')
+    .pipe(acss('_atoms.scss', acssConf, {
+      addRules: acssRules
+    }))
+    .pipe(gulp.dest('dist'));
 ```
 
 ## Testing
