@@ -69,7 +69,7 @@ module.exports = [{
 var gulp = require('gulp');
 var acss = require('gulp-atomizer');
 var acssConf = require('your-conf-file.js')
-var acssOptions = require('your-rules-file.js')
+var acssRules = require('your-rules-file.js')
 
 gulp.task('acss', function() {
   return gulp.src('./*.html')
