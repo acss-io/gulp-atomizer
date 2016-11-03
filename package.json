@@ -1,6 +1,6 @@
 {
   "name": "gulp-atomizer",
-  "version": "1.0.8",
+  "version": "2.0.0",
   "description": "Gulp plugin for Atomizer",
   "tags": "gulpplugin",
   "main": "index.js",
