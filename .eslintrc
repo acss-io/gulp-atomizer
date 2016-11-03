@@ -17,12 +17,16 @@
             "never"
         ],
         "no-console": [
-          2
+            2
         ]
     },
     "env": {
         "es6": true,
         "node": true
     },
-    "extends": "eslint:recommended"
+    "extends": "eslint:recommended",
+    "globals": {
+        "PluginError": true,
+        "PLUGIN_NAME": true
+    }
 }

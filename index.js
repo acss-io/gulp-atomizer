@@ -1,10 +1,9 @@
 /*eslint-env node, gulp */
 
-var through  = require('through2')
 var Atomizer = require('atomizer')
 var _        = require('lodash')
-var File     = require('vinyl')
 var path     = require('path')
+var through  = require('through2')
 
 // Parse text to find Atomic CSS classes
 // var foundClasses = atomizer.findClassNames()
@@ -16,7 +15,6 @@ var path     = require('path')
 // var css = atomizer.getCss(finalConfig)
 
 module.exports = function(outputName, config, options /*optional css options*/) {
-
   // default the args
   outputName = outputName || 'atomic.css'
   var acssConfig = config || {}
@@ -45,6 +43,10 @@ module.exports = function(outputName, config, options /*optional css options*/) 
       //lazy init the acss class
       if (!acss) {
         acss = new Atomizer()
+
+        if (options && options.addRules) {
+          acss.addRules(options.addRules)
+        }
       }
 
       // generate the class names and push them into the global collector array
@@ -92,5 +94,4 @@ module.exports = function(outputName, config, options /*optional css options*/) 
   }
 
   return through.obj(gulpTransformer, endStream)
-
 }
