@@ -1,6 +1,6 @@
 {
   "name": "gulp-atomizer",
-  "version": "1.0.6",
+  "version": "1.0.8",
   "description": "Gulp plugin for Atomizer",
   "tags": "gulpplugin",
   "main": "index.js",
@@ -23,10 +23,10 @@
     "through2": "^2.0.0",
     "vinyl": "^1.1.0",
     "event-stream": "^3.3.2",
-    "vinyl-fs": "^2.2.1",
-    "mocha": "^2.3.4"
+    "vinyl-fs": "^2.2.1"
   },
   "devDependencies": {
-    "eslint": "^1.10.3"
+    "eslint": "^1.10.3",
+    "mocha": "^2.3.4"
   }
 }
