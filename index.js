@@ -14,7 +14,14 @@ var through   = require('through2')
 // Generate Atomic CSS from configuration
 // var css = atomizer.getCss(finalConfig)
 
-module.exports = function(outputName, {outfile, acssConfig, cssOptions, addRules}) {
+module.exports = function(options={}) {
+
+  if (typeof options === 'string') {
+    options = { outfile: options }
+  }
+
+  // destructure options
+  let {outfile, acssConfig, cssOptions, addRules} = options
 
   // default options
   outfile = outfile || 'atomic.css'
@@ -84,7 +91,7 @@ module.exports = function(outputName, {outfile, acssConfig, cssOptions, addRules
     // create the output file
     // (take the metadata from most recent file)
     var atomicFile = latestFile.clone({contents: false})
-    atomicFile.path = path.join(latestFile.base, outputName)
+    atomicFile.path = path.join(latestFile.base, outfile)
     atomicFile.contents = new Buffer(cssOut)
 
     // all done!
