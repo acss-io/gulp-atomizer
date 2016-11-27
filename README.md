@@ -38,7 +38,7 @@ gulp.task('acss', function() {
       // Configuration options to pass to atomizer.
       // This will have your variables, breakpoint definitions, etc.
       // Either `require` it from a separate file or include it inline
-      acssConfig: require('acssConf.js'),
+      acssConfig: require('./acssConf.js'),
       // Custom css generation options to pass to atomizer's `getCSS` function.
       // This is an undocumented feature of atomizer, so I don't test for it.
       cssOptions: {
@@ -48,7 +48,7 @@ gulp.task('acss', function() {
       // You can use it to create custom ACSS 'functions'.
       // Calls `acss.addRules(options.addRules)` under the hood.
       // See the tests for an example of how to use this.
-      addRules: require('rules.js')
+      addRules: require('./rules.js')
     }))
 
     .pipe(gulp.dest('dist'));
