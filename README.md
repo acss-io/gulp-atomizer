@@ -40,58 +40,19 @@ gulp.task('acss', function() {
       // Either `require` it from a separate file or include it inline
       acssConfig: require('acssConf.js'),
       // Custom css generation options to pass to atomizer's `getCSS` function.
-      // This isn't a documented feature of atomizer, but it's there for those who know what to do with it.
+      // This is an undocumented feature of atomizer, so I don't test for it.
       cssOptions: {
         namespace: '#atomic'
       },
-      // This is a hook for another undocumented feature of atomizer.  You can use it to create custom ACSS 'functions'.  Calls `acss.addRules(options.addRules)` under the hood.
+      // A hook for another undocumented feature of atomizer.  
+      // You can use it to create custom ACSS 'functions'.
+      // Calls `acss.addRules(options.addRules)` under the hood.
+      // See the tests for an example of how to use this.
       addRules: require('rules.js')
     }))
 
     .pipe(gulp.dest('dist'));
 });
-```
-
-## Example with custom rules addition
-You can add your own rules by passing in the `addRules` property in the options object. These will be concatenated after the normal set of rules. Setting rules up this way helps with the creation of theme files.
-```js
-// your-rules-file.js
-module.exports = [{
-    'type': 'helper',
-    'id': 'test-helper',
-    'name': 'Test Helper',
-    'matcher': 'test-helper',
-    'noParams': true,
-    'styles': {
-      'cursor': 'pointer',
-      'font-size': '1.3em',
-      'padding': '5px'
-    }
-  }, {
-    'type': 'pattern',
-    'id': 'test-pattern',
-    'name': 'Test Pattern',
-    'matcher': 'TestPattern',
-    'allowParamToValue': true,
-    'styles': {
-      'margin': '5px 5px 10px',
-      'background-color': '$0'
-    }
-}];
-```
-```js
-// gulpfile.js
-var gulp = require('gulp');
-var acss = require('gulp-atomizer');
-var acssConf = require('your-conf-file.js')
-var acssRules = require('your-rules-file.js')
-
-gulp.task('acss', function() {
-  return gulp.src('./*.html')
-    .pipe(acss('_atoms.scss', acssConf, {
-      addRules: acssRules
-    }))
-    .pipe(gulp.dest('dist'));
 ```
 
 ## Testing
