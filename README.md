@@ -23,17 +23,31 @@ gulp.task('acss', function() {
 });
 ```
 
-## Example with custom filename, config, and options
+## Full API Example
 ```js
 var gulp = require('gulp');
 var acss = require('gulp-atomizer');
-var acssConf = require('your-conf-file.js') // this would contain your breakpoint definitions, customs, etc.
 
 gulp.task('acss', function() {
   return gulp.src('./*.html')
-    .pipe(acss('_atoms.scss', acssConf, {
-      namespace: '#atomic'
+
+    .pipe(acss({
+      // the filename of your output file.
+      // Default is `atomic.css`
+      outfile: 'atoms.css',
+      // Configuration options to pass to atomizer.
+      // This will have your variables, breakpoint definitions, etc.
+      // Either `require` it from a separate file or include it inline
+      acssConfig: require('acssConf.js'),
+      // Custom css generation options to pass to atomizer's `getCSS` function.
+      // This isn't a documented feature of atomizer, but it's there for those who know what to do with it.
+      cssOptions: {
+        namespace: '#atomic'
+      },
+      // This is a hook for another undocumented feature of atomizer.  You can use it to create custom ACSS 'functions'.  Calls `acss.addRules(options.addRules)` under the hood.
+      addRules: require('rules.js')
     }))
+
     .pipe(gulp.dest('dist'));
 });
 ```
@@ -66,6 +80,7 @@ module.exports = [{
 }];
 ```
 ```js
+// gulpfile.js
 var gulp = require('gulp');
 var acss = require('gulp-atomizer');
 var acssConf = require('your-conf-file.js')

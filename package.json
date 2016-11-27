@@ -18,10 +18,11 @@
   },
   "homepage": "https://github.com/acss-io/gulp-atomizer#readme",
   "dependencies": {
+    "array-uniq": "^1.0.3",
     "atomizer": "^3.3.2",
+    "event-stream": "^3.3.2",
     "lodash": "^3.10.1",
     "through2": "^2.0.0",
-    "event-stream": "^3.3.2",
     "vinyl-fs": "^2.2.1"
   },
   "devDependencies": {

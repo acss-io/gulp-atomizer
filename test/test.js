@@ -5,14 +5,16 @@ var vfs      = require('vinyl-fs')
 var fs       = require('fs')
 var assert   = require('assert')
 
-describe('gulp-atomizer', function() {
-  describe('in buffer mode', function () {
-    it('should find acss classnames in html files', function (td) {
+describe('gulp-atomizer', () => {
+  describe('in buffer mode', () => {
+    it('should find acss classnames in html files', (td) => {
 
       //init our transformer
       var acss = atomizer('something.css', {
-        'custom': {
-          'Bgc($primary)': '#f3f3f3'
+        acssConfig: {
+          'custom': {
+            'Bgc($primary)': '#f3f3f3'
+          }
         }
       })
 
@@ -20,7 +22,7 @@ describe('gulp-atomizer', function() {
       vfs.src(['./test1.html', './test2.html'], {cwd: __dirname})
         .pipe(acss)
 
-      acss.once('data', function(file) {
+      acss.once('data', file => {
         // make sure it came out the same way it went in
         assert(file.isBuffer())
 
@@ -36,39 +38,43 @@ describe('gulp-atomizer', function() {
         td()
       })
     })
-    it('should find acss classnames and new rules in html file', function (td) {
+
+    it('should find acss classnames and new rules in html file', td => {
 
       //init our transformer
-      var acss = atomizer('something.css', {}, {
-        'addRules': [{
-          'type': 'helper',
-          'id': 'test-helper',
-          'name': 'Test Helper',
-          'matcher': 'test-helper',
-          'noParams': true,
-          'styles': {
-            'cursor': 'pointer'
-          }
-        }, {
-          'type': 'pattern',
-          'id': 'test-pattern',
-          'name': 'Test Pattern',
-          'matcher': 'TestPattern',
-          'allowParamToValue': false,
-          'styles': {
-            'background-repeat': '$0'
+      var acss = atomizer('something.css', {
+        'addRules': [
+          {
+            'type': 'helper',
+            'id': 'test-helper',
+            'name': 'Test Helper',
+            'matcher': 'test-helper',
+            'noParams': true,
+            'styles': {
+              'cursor': 'pointer'
+            }
           },
-          'arguments': [{
-            'n': 'no-repeat'
-          }]
-        }]
+          {
+            'type': 'pattern',
+            'id': 'test-pattern',
+            'name': 'Test Pattern',
+            'matcher': 'TestPattern',
+            'allowParamToValue': false,
+            'styles': {
+              'background-repeat': '$0'
+            },
+            'arguments': [{
+              'n': 'no-repeat'
+            }]
+          }
+        ]
       })
 
       //pipe the test file to acss
       vfs.src(['./test3.html'], {cwd: __dirname})
         .pipe(acss)
 
-      acss.once('data', function(file) {
+      acss.once('data', file => {
         // make sure it came out the same way it went in
         assert(file.isBuffer())
 

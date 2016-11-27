@@ -1,9 +1,9 @@
 /*eslint-env node, gulp */
 
-var Atomizer = require('atomizer')
-var _        = require('lodash')
-var path     = require('path')
-var through  = require('through2')
+var Atomizer  = require('atomizer')
+var arrayUniq = require('array-uniq')
+var path      = require('path')
+var through   = require('through2')
 
 // Parse text to find Atomic CSS classes
 // var foundClasses = atomizer.findClassNames()
@@ -14,10 +14,11 @@ var through  = require('through2')
 // Generate Atomic CSS from configuration
 // var css = atomizer.getCss(finalConfig)
 
-module.exports = function(outputName, config, options /*optional css options*/) {
-  // default the args
-  outputName = outputName || 'atomic.css'
-  var acssConfig = config || {}
+module.exports = function(outputName, {outfile, acssConfig, cssOptions, addRules}) {
+
+  // default options
+  outfile = outfile || 'atomic.css'
+  acssConfig = acssConfig || {}
 
   //global variables
   var latestFile
@@ -44,8 +45,8 @@ module.exports = function(outputName, config, options /*optional css options*/) 
       if (!acss) {
         acss = new Atomizer()
 
-        if (options && options.addRules) {
-          acss.addRules(options.addRules)
+        if (addRules) {
+          acss.addRules(addRules)
         }
       }
 
@@ -71,15 +72,14 @@ module.exports = function(outputName, config, options /*optional css options*/) 
 
     // nothing in, nothing out
     if (!latestFile || !acss) {
-      cb()
-      return
+      return cb()
     }
     // remove duplicate classes
-    var classes = _.uniq(foundClasses)
+    var classes = arrayUniq(foundClasses)
     // merge the classes into the user's config
     var finalConfig = acss.getConfig(classes, acssConfig)
     // get the actual css
-    var cssOut = options ? acss.getCss(finalConfig, options) : acss.getCss(finalConfig)
+    var cssOut = acss.getCss(finalConfig, cssOptions)
 
     // create the output file
     // (take the metadata from most recent file)
