@@ -1,6 +1,6 @@
 {
   "name": "gulp-atomizer",
-  "version": "3.0.3",
+  "version": "3.0.4",
   "description": "Gulp plugin for Atomizer",
   "tags": "gulpplugin",
   "main": "index.js",
@@ -29,7 +29,7 @@
     "eslint": "^1.10.3",
     "mocha": "^2.3.4"
   },
-  "engines" : {
-    "node" : ">=6.9.1"
+  "engines": {
+    "node": ">=6.9.1"
   }
 }
