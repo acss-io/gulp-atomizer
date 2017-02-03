@@ -2,9 +2,7 @@
 
 Gulp plugin for [Atomizer](https://github.com/yahoo/atomizer).
 
-[![npm version](https://badge.fury.io/js/gulp-atomizer.svg)](https://badge.fury.io/js/gulp-atomizer)
-
-Warning: This is my first gulp plugin.  You may find some rough edges.  If something doesn't work right **please submit a bug report or pull request**.  I'm committed to maintaining it and making it work like any other first-class gulp plugin.
+[![npm version](https://badge.fury.io/js/gulp-atomizer.svg)](https://badge.fury.io/js/gulp-atomizer) [![Package Quality](http://npm.packagequality.com/shield/gulp-atomizer.svg)](http://packagequality.com/#?package=gulp-atomizer)
 
 ## Installation
 ```bash
