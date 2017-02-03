@@ -1,9 +1,9 @@
-/*eslint-env node, gulp */
+/* eslint-env node, gulp */
 
-var Atomizer  = require('atomizer')
+var Atomizer = require('atomizer')
 var arrayUniq = require('array-uniq')
-var path      = require('path')
-var through   = require('through2')
+var path = require('path')
+var through = require('through2')
 
 // Parse text to find Atomic CSS classes
 // var foundClasses = atomizer.findClassNames()
@@ -14,8 +14,7 @@ var through   = require('through2')
 // Generate Atomic CSS from configuration
 // var css = atomizer.getCss(finalConfig)
 
-module.exports = function(options={}) {
-
+module.exports = function (options = {}) {
   if (typeof options === 'string') {
     options = { outfile: options }
   }
@@ -27,28 +26,22 @@ module.exports = function(options={}) {
   outfile = outfile || 'atomic.css'
   acssConfig = acssConfig || {}
 
-  //global variables
+  // global variables
   var latestFile
   var latestMod
   var foundClasses = []
   var acss
 
   // create the file handler
-  var gulpTransformer = function(file, unused, cb) {
-
+  var gulpTransformer = function (file, unused, cb) {
     if (file.isNull()) {
       // nothing to do
       return cb(null, file)
-    }
-
-    else if (file.isStream()) {
+    } else if (file.isStream()) {
       // file.contents is a Stream.  We don't support streams
       this.emit('error', new PluginError(PLUGIN_NAME, 'Streams not supported!'))
-    }
-
-    else if (file.isBuffer()) {
-
-      //lazy init the acss class
+    } else if (file.isBuffer()) {
+      // lazy init the acss class
       if (!acss) {
         acss = new Atomizer()
 
@@ -70,13 +63,10 @@ module.exports = function(options={}) {
 
       // tell the engine we're done
       cb()
-
     }
-
   }
 
-  var endStream = function(cb) {
-
+  var endStream = function (cb) {
     // nothing in, nothing out
     if (!latestFile || !acss) {
       return cb()
@@ -97,7 +87,6 @@ module.exports = function(options={}) {
     // all done!
     this.push(atomicFile)
     cb()
-
   }
 
   return through.obj(gulpTransformer, endStream)
