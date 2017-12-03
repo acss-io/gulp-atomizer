@@ -19,7 +19,7 @@
   "homepage": "https://github.com/acss-io/gulp-atomizer#readme",
   "dependencies": {
     "array-uniq": "^1.0.3",
-    "atomizer": "^3.3.2",
+    "atomizer": "^3.4.6",
     "event-stream": "^3.3.2",
     "lodash": "^3.10.1",
     "through2": "^2.0.0",
